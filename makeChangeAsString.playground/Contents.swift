@@ -1,24 +1,28 @@
 import UIKit
 
 
+func makeChangeAsString(fromAmount: Double, withCost: Double) -> String {
+    
+    
+    var change = fromAmount - withCost
+    let remainder = change.truncatingRemainder(dividingBy: 1)
+    
+    let dollarAmount = Int(change)
+    let quarterAmount = Int(remainder / 0.25)
+    let dimeAmount = Int(remainder / 0.10)
+    let nickelAmount = Int(remainder / 0.05)
+    let pennyAmount = Int(remainder / 0.01)
+    
+    let stringy = "Your change is $\(change). That is \(dollarAmount) dollars, \(quarterAmount) quarters, \(dimeAmount) dimes, \(nickelAmount) nickels, \(pennyAmount) pennies."
+    
+    return stringy
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+makeChangeAsString(fromAmount: 50.00, withCost: 45.00)
 
 
 // Test Cases
-//makeChangeAsString(fromAmount: 10.00, withCost: 2.38) // returns "Your change is $7.62. That is 7 dollars, 2 quarters, 1 dime, 0 nickels and 2 pennies."
+makeChangeAsString(fromAmount: 10.00, withCost: 2.38) // returns "Your change is $7.62. That is 7 dollars, 2 quarters, 1 dime, 0 nickels and 2 pennies."
 //makeChangeAsString(fromAmount: 5.00, withCost: 2.15)  // returns "Your change is $2.85. That is 2 dollars, 3 quarters, 1 dime, 0 nickels and 0 pennies."
 //makeChangeAsString(fromAmount: 1.00, withCost: 2.38)  // returns "You didn't pay enough! You still owe $1.38. That is 1 dollar, 1 quarter, 1 dime, 0 nickels and 3 pennies."
 //makeChangeAsString(fromAmount: 10.00, withCost: 8.00) // returns "Your change is $2.0. That is 2 dollars, 0 quarters, 0 dimes, 0 nickels and 0 pennies."
